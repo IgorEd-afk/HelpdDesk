@@ -9,7 +9,8 @@
         cnpj:yup.string().required('CNPJ é obrigatório'),
         email:yup.string().email().required('Email é obrigatório'),
         senha:yup.string().required('Senha é obrigatória'),
-        endereco:yup.array().required('Forneça um endereço')
+        endereco:yup.array().required('Forneça um endereço'),
+        telefone:yup.string().required('Forneça telefone para contato')
     })
 
 //Funções
@@ -19,6 +20,7 @@
         
         return hash
     }
+
     export async function Cadastro(dados){
         
         try{
@@ -32,17 +34,21 @@
             if(usr){
                 return [false,'Usuário já existe']
             }
+
             var senhahash = await crypto(dados.senha)
+            var endereco = JSON.stringify(dados.endereco) 
+            
             await Empresa.create({
                 nomeFantasia:dados.nome,
                 cnpj:dados.cnpj,
+                telefone:dados.telefone,
                 email:dados.email,
                 senha:senhahash ,
-                endereco:JSON.stringify(dados.endereco),
-            }).then(()=>{
-                return [true,'Cadastro realizado com sucesso']
+                endereco:endereco,
             })
             
+            return [true,'Cadastro realizado com sucesso']
+
         }catch(err){
             if (err.name === 'ValidationError') {
                 const errors = err.inner.map(error => error.message)

@@ -4,7 +4,7 @@
 //Criando tabela de chamados    
     const Chamados = db.sequelize.define('chamados',{
         numProtocol:{type:db.Sequelize.STRING,allowNull:false},
-        nome:{type:db.Sequelize.STRING,allowNull:false},
+        nomeEmpresa:{type:db.Sequelize.STRING,allowNull:false},
         telefone:{type:db.Sequelize.STRING,allowNull:false},
         endereco:{type:db.Sequelize.STRING,allowNull:false},
         nomeFuncionario:{type:db.Sequelize.STRING,allowNull:false},
@@ -14,7 +14,7 @@
 
     const ChamadosFechados = db.sequelize.define('chamadosResolvidos',{
         numProtocol:{type:db.Sequelize.STRING,allowNull:false},
-        nome:{type:db.Sequelize.STRING,allowNull:false},
+        nomeEmpresa:{type:db.Sequelize.STRING,allowNull:false},
         telefone:{type:db.Sequelize.STRING,allowNull:false},
         endereco:{type:db.Sequelize.STRING,allowNull:false},
         nomeFuncionario:{type:db.Sequelize.STRING,allowNull:false},

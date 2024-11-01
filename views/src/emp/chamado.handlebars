@@ -1,12 +1,12 @@
-<form action="" method="post">
+<form action="/emp/called" method="post">
     <label for=""></label>
-    <input type="text" name="nome" id="">
+    <input type="text" name="nomeFuncionario" id="">
     <label for="">Tipo de ocorrencia</label>
-    <select name="" id="">
+    <select name="tipo" id="">
         {{#each ocorrencias}}
-            <option value="{{ocorrencias.id}}">{{ocorrencias.status}}</option>
+            <option value="{{id}}">{{status}}</option>
         {{/each}}
     </select>
-    <input type="text" name="descricao" id="">
+    <input type="text" name="desc" id="">
     <input type="submit" value="Registrar ocorrencia">
 </form>
